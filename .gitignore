@@ -1,0 +1,8 @@
+# FOLDERS
+
+node_modules/
+
+# FILES
+
+package-lock.json
+yarn.lock
