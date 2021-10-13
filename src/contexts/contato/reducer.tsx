@@ -11,17 +11,11 @@ type ActionType = {
   payload: object;
 };
 
-type UserType = {
-  id: number;
-  name: string;
-  lastName: string;
-  email: string;
+type ContatoState = {
+  contatos: ContatoType[]
 };
 
-const reducer: React.Reducer<UserType, ActionType> = (
-  state: UserType,
-  action: ActionType
-) => {
+const reducer: React.Reducer<ContatoState, ActionType> = (state: ContatoState, action: ActionType) => {
   switch (action.type) {
     case ContatoContext.LOGIN_REQUEST:
       return produce(state, (draft) => {});
@@ -36,5 +30,13 @@ const reducer: React.Reducer<UserType, ActionType> = (
       throw new Error();
   }
 };
+
+export type ContatoType = {
+  Nome: string;
+  Email: string;
+  Celular: string;
+  Telefone: string;
+  Marcadores: string[];
+}
 
 export default reducer;

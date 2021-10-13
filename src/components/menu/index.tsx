@@ -39,23 +39,23 @@ const MenuContextProvider: React.FC = ({ children }) => {
         setState,
       }}
     >
-      <Navbar fixed="top" bg="light" expand="lg">
+      <Navbar fixed="top" bg="dark" expand="lg">
         <Navbar.Toggle aria-controls="navbarScroll" />
 
         <Navbar.Collapse id="navbarScroll">
-          <Navbar bg="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <IconRow>
                 <FaRegUser></FaRegUser>
                 
-                <Navbar.Brand href="#home">
+                <Navbar.Brand  href="#home">
                   Contatos
                 </Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
 
-          <Navbar bg="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <IconRow>
                 <FaUndo></FaUndo>
@@ -67,7 +67,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <IconRow>
                 <FaRegPlusSquare></FaRegPlusSquare>
@@ -79,7 +79,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <IconRow>
                 <FaSortDown></FaSortDown>
@@ -91,7 +91,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <IconRow>
                 <FaFileImport></FaFileImport>
@@ -103,7 +103,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <IconRow>
                 <FaFileExport></FaFileExport>
@@ -115,7 +115,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <IconRow>
                 <FaPrint></FaPrint>
@@ -127,7 +127,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <IconRow>
                 <FaFolderOpen></FaFolderOpen>
@@ -139,7 +139,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="light">
+          <Navbar bg="dark" variant="dark">
             <Container>
               <IconRow>
                 <FaTrash></FaTrash>

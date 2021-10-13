@@ -43,5 +43,6 @@ const ContatoContextProvider: React.FC = ({ children }) => {
     </ContatoContext.Provider>
   );
 };
+
 export { ContatoContextProvider };
 export default ContatoContext;
