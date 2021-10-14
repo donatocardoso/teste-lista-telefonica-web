@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { LoadContextProvider } from "../../components/load";
 import { MenuContextProvider } from "../../components/menu";
 import { Page, PageData } from "./styles";
 
@@ -14,7 +15,7 @@ type PropsMainLayoutContext = {
 //Valor default do contexto
 const DEFAULT_VALUE = {
   state: {},
-  setState: () => {}, //função de inicialização
+  setState: () => {} //função de inicialização
 };
 
 //criando nosso contexto MainLayoutContext
@@ -31,10 +32,12 @@ const MainLayoutContextProvider: React.FC = ({ children }) => {
     <MainLayoutContext.Provider
       value={{
         state,
-        setState,
+        setState
       }}
     >
       <Page>
+        <LoadContextProvider></LoadContextProvider>
+
         <MenuContextProvider></MenuContextProvider>
 
         <PageData>{children}</PageData>

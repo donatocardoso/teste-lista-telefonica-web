@@ -1,6 +1,16 @@
 import React, { createContext, useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
-import { FaFileExport, FaFileImport, FaFolderOpen, FaPrint, FaRegPlusSquare, FaRegUser, FaSortDown, FaTrash, FaUndo } from "react-icons/fa";
+import {
+  FaFileExport,
+  FaFileImport,
+  FaFolderOpen,
+  FaPrint,
+  FaRegPlusSquare,
+  FaRegUser,
+  FaSortDown,
+  FaTrash,
+  FaUndo
+} from "react-icons/fa";
 import { IconRow } from "./styles";
 
 //Tipando os dados que quero para usuário
@@ -17,9 +27,9 @@ type PropsMenuContext = {
 //Valor default do contexto
 const DEFAULT_VALUE = {
   state: {
-    open: true,
+    open: true
   },
-  setState: () => { }, //função de inicialização
+  setState: () => {} //função de inicialização
 };
 
 //criando nosso contexto MenuContext
@@ -36,7 +46,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
     <MenuContext.Provider
       value={{
         state,
-        setState,
+        setState
       }}
     >
       <Navbar fixed="top" bg="dark" expand="lg">
@@ -47,10 +57,8 @@ const MenuContextProvider: React.FC = ({ children }) => {
             <Container>
               <IconRow>
                 <FaRegUser></FaRegUser>
-                
-                <Navbar.Brand  href="#home">
-                  Contatos
-                </Navbar.Brand>
+
+                <Navbar.Brand href="#home">Contatos</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
@@ -59,10 +67,8 @@ const MenuContextProvider: React.FC = ({ children }) => {
             <Container>
               <IconRow>
                 <FaUndo></FaUndo>
-                
-                <Navbar.Brand href="#home">
-                  Contatos frequentes
-                </Navbar.Brand>
+
+                <Navbar.Brand href="#home">Contatos frequentes</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
@@ -71,10 +77,8 @@ const MenuContextProvider: React.FC = ({ children }) => {
             <Container>
               <IconRow>
                 <FaRegPlusSquare></FaRegPlusSquare>
-                
-                <Navbar.Brand href="#home">
-                  Mesclar e corrigir
-                </Navbar.Brand>
+
+                <Navbar.Brand href="#home">Mesclar e corrigir</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
@@ -83,10 +87,8 @@ const MenuContextProvider: React.FC = ({ children }) => {
             <Container>
               <IconRow>
                 <FaSortDown></FaSortDown>
-                
-                <Navbar.Brand href="#home">
-                  Marcadores
-                </Navbar.Brand>
+
+                <Navbar.Brand href="#home">Marcadores</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
@@ -95,10 +97,8 @@ const MenuContextProvider: React.FC = ({ children }) => {
             <Container>
               <IconRow>
                 <FaFileImport></FaFileImport>
-                
-                <Navbar.Brand href="#home">
-                  Importar
-                </Navbar.Brand>
+
+                <Navbar.Brand href="#home">Importar</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
@@ -107,10 +107,8 @@ const MenuContextProvider: React.FC = ({ children }) => {
             <Container>
               <IconRow>
                 <FaFileExport></FaFileExport>
-                
-                <Navbar.Brand href="#home">
-                  Exportar
-                </Navbar.Brand>
+
+                <Navbar.Brand href="#home">Exportar</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
@@ -119,10 +117,8 @@ const MenuContextProvider: React.FC = ({ children }) => {
             <Container>
               <IconRow>
                 <FaPrint></FaPrint>
-                
-                <Navbar.Brand href="#home">
-                  Imprimir
-                </Navbar.Brand>
+
+                <Navbar.Brand href="#home">Imprimir</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
@@ -131,10 +127,8 @@ const MenuContextProvider: React.FC = ({ children }) => {
             <Container>
               <IconRow>
                 <FaFolderOpen></FaFolderOpen>
-                
-                <Navbar.Brand href="#home">
-                  Outros contatos
-                </Navbar.Brand>
+
+                <Navbar.Brand href="#home">Outros contatos</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
@@ -144,9 +138,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
               <IconRow>
                 <FaTrash></FaTrash>
 
-                <Navbar.Brand href="#home">
-                  Lixeira
-                </Navbar.Brand>
+                <Navbar.Brand href="#home">Lixeira</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>

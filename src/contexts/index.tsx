@@ -1,5 +1,4 @@
 import React from "react";
-
 import { ContatoContextProvider } from "./contato/context";
 
 const GlobalContext: React.SFC = ({ children }) => {

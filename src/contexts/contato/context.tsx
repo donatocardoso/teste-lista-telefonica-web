@@ -18,9 +18,9 @@ const DEFAULT_VALUE = {
   state: {
     name: "",
     lastName: "",
-    email: "",
+    email: ""
   },
-  setState: () => {}, //função de inicialização
+  setState: () => {} //função de inicialização
 };
 
 //criando nosso contexto ContatoContext
@@ -36,7 +36,7 @@ const ContatoContextProvider: React.FC = ({ children }) => {
     <ContatoContext.Provider
       value={{
         state,
-        setState,
+        setState
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import { produce } from "immer";
 
 enum ContatoContext {
   LOGIN_REQUEST = "@auth/LOGIN_REQUEST",
-  SIGN_IN_REQUEST = "@auth/SIGN_IN_REQUEST",  
+  SIGN_IN_REQUEST = "@auth/SIGN_IN_REQUEST",
   LOGIN_ERROR = "@auth/LOGIN_ERROR"
 }
 
@@ -12,7 +12,7 @@ type ActionType = {
 };
 
 type ContatoState = {
-  contatos: ContatoType[]
+  contatos: ContatoType[];
 };
 
 const reducer: React.Reducer<ContatoState, ActionType> = (state: ContatoState, action: ActionType) => {
@@ -37,6 +37,6 @@ export type ContatoType = {
   Celular: string;
   Telefone: string;
   Marcadores: string[];
-}
+};
 
 export default reducer;

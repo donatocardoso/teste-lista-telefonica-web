@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Table } from 'react-bootstrap';
+import { Table } from "react-bootstrap";
 import { ApiTokiToki } from "../../apis";
 import ContatoContext from "../../contexts/contato/context";
 import { ContatoType } from "../../contexts/contato/reducer";
@@ -18,20 +18,16 @@ const ContatoGrid: React.FC = () => {
       .then(({ data }: any) => {
         setContatos(data.content);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   useEffect(() => {
-    if(!contatos.length) fetchContatos();
+    if (!contatos.length) fetchContatos();
   }, [contatos]);
-
 
   return (
     <MainLayoutContextProvider>
-      <Table
-        bordered={false}
-        borderless={false}
-        hover={true}>
+      <Table bordered={false} borderless={false} hover={true}>
         <thead>
           <tr>
             <th>Título</th>
@@ -43,8 +39,8 @@ const ContatoGrid: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {contatos?.length
-            ? contatos.map(contato => (
+          {contatos?.length ? (
+            contatos.map((contato) => (
               <tr>
                 <td>{contato.Nome}</td>
                 <td>{contato.Email}</td>
@@ -54,11 +50,11 @@ const ContatoGrid: React.FC = () => {
                 <td></td>
               </tr>
             ))
-            : (
-              <tr>
-                <td colSpan={6}>Nenhum contato encontrato...</td>
-              </tr>
-            )}
+          ) : (
+            <tr>
+              <td colSpan={6}>Nenhum contato encontrato...</td>
+            </tr>
+          )}
         </tbody>
       </Table>
     </MainLayoutContextProvider>
