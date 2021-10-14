@@ -5,5 +5,8 @@ node_modules/
 
 # FILES
 
+**/*.css
+**/*.map
+
 package-lock.json
 yarn.lock

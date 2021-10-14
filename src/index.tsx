@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import GlobalContext from "./contexts/index";
 import Contato from "./pages/contato";
-import "./scss/index.scss";
+import "./scss/index.css";
 
 ReactDOM.render(
   <React.StrictMode>
