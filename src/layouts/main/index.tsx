@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react";
-import { LoadContextProvider } from "../../components/load";
 import { MenuContextProvider } from "../../components/menu";
 import { Page, PageData } from "./styles";
 
@@ -36,8 +35,6 @@ const MainLayoutContextProvider: React.FC = ({ children }) => {
       }}
     >
       <Page>
-        <LoadContextProvider></LoadContextProvider>
-
         <MenuContextProvider></MenuContextProvider>
 
         <PageData>{children}</PageData>

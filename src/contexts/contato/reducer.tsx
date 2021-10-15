@@ -32,6 +32,7 @@ const reducer: React.Reducer<ContatoState, ActionType> = (state: ContatoState, a
 };
 
 export type ContatoType = {
+  Id: number;
   Nome: string;
   Email: string;
   Celular: string;

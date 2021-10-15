@@ -1,24 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { ApiTokiToki } from "../../apis";
-import ContatoContext from "../../contexts/contato/context";
 import { ContatoType } from "../../contexts/contato/reducer";
 import { MainLayoutContextProvider } from "../../layouts/main";
 
 const ContatoGrid: React.FC = () => {
-  //estados criados para armazenar o conteudo digitado dos inputs
   const [contatos, setContatos] = useState<ContatoType[]>([]);
-
-  //usando o useContext para capturar as propriedades do ContatoContext
-  const { setState: setGlobalState } = useContext(ContatoContext);
-
-  //função que ira submeter a alteração do estado global da aplicação
+  
   function fetchContatos() {
     ApiTokiToki.get("/contato")
       .then(({ data }: any) => {
-        setContatos(data.content);
+        setContatos(data.content);        
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);        
+      });
   }
 
   useEffect(() => {
@@ -41,7 +37,7 @@ const ContatoGrid: React.FC = () => {
         <tbody>
           {contatos?.length ? (
             contatos.map((contato) => (
-              <tr>
+              <tr key={contato.Id}>
                 <td>{contato.Nome}</td>
                 <td>{contato.Email}</td>
                 <td>{contato.Celular}</td>
