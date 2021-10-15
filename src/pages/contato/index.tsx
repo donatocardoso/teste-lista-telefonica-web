@@ -1,60 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
-import { ApiTokiToki } from "../../apis";
-import { ContatoType } from "../../contexts/contato/reducer";
-import { MainLayoutContextProvider } from "../../layouts/main";
+import { createContext, useState } from "react";
+import ContatoGrid from "./ContatoGrid";
+import ContatoModal from "./ContatoModal";
+import "./styles";
 
-const ContatoGrid: React.FC = () => {
-  const [contatos, setContatos] = useState<ContatoType[]>([]);
-  
-  function fetchContatos() {
-    ApiTokiToki.get("/contato")
-      .then(({ data }: any) => {
-        setContatos(data.content);        
-      })
-      .catch((err) => {
-        console.log(err);        
-      });
+// Criando o tipo do contexto
+type ContatoContextType = {
+  isOpen: boolean;
+  idContato: number;
+
+  open: React.Dispatch<React.SetStateAction<number>>;
+  close: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+// Criando o contexto inicial
+export const ContatoContext = createContext<ContatoContextType | null>(null);
+
+// Criando o manipulador do contexto
+const Contato: React.FC = () => {
+  const [isOpen, setState] = useState<boolean>(false);
+  const [idContato, setIdContato] = useState<number>(0);
+
+  function open(idContato: number) {
+    setIdContato(idContato);
+    setState(true);
   }
 
-  useEffect(() => {
-    if (!contatos.length) fetchContatos();
-  }, [contatos]);
+  function close(value: boolean) {
+    setIdContato(null);
+    setState(false);
+  }
 
   return (
-    <MainLayoutContextProvider>
-      <Table bordered={false} borderless={false} hover={true}>
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>E-mail</th>
-            <th>Celular</th>
-            <th>Telefone</th>
-            <th>Marcadores</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {contatos?.length ? (
-            contatos.map((contato) => (
-              <tr key={contato.Id}>
-                <td>{contato.Nome}</td>
-                <td>{contato.Email}</td>
-                <td>{contato.Celular}</td>
-                <td>{contato.Telefone}</td>
-                <td>{contato.Marcadores}</td>
-                <td></td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan={6}>Nenhum contato encontrato...</td>
-            </tr>
-          )}
-        </tbody>
-      </Table>
-    </MainLayoutContextProvider>
+    <ContatoContext.Provider value={{ isOpen, idContato, open, close }}>
+      <ContatoModal></ContatoModal>
+      <ContatoGrid></ContatoGrid>
+    </ContatoContext.Provider>
   );
 };
 
-export default ContatoGrid;
+export default Contato;

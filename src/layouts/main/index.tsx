@@ -1,41 +1,19 @@
-import React, { createContext, useState } from "react";
-import { MenuContextProvider } from "../../components/menu";
+import React, { createContext } from "react";
+import Menu from "../../components/menu";
 import { Page, PageData } from "./styles";
 
-//Tipando os dados que quero para usuário
-type MainLayoutType = {};
+// Criando o tipo do contexto
+type MainLayoutContextType = {};
 
-//Tipando as Props do contexto
-type PropsMainLayoutContext = {
-  state: MainLayoutType;
-  setState: React.Dispatch<React.SetStateAction<MainLayoutType>>;
-};
+// Criando o contexto inicial
+export const MainLayoutContext = createContext<MainLayoutContextType>(null);
 
-//Valor default do contexto
-const DEFAULT_VALUE = {
-  state: {},
-  setState: () => {} //função de inicialização
-};
-
-//criando nosso contexto MainLayoutContext
-const MainLayoutContext = createContext<PropsMainLayoutContext>(DEFAULT_VALUE);
-
-/**
- * Função que irá conter o estado e função que irá alterar o estado 'setState'
- * quer irá prover o contexto para os componentes filhos da árvore
- */
-const MainLayoutContextProvider: React.FC = ({ children }) => {
-  const [state, setState] = useState(DEFAULT_VALUE.state);
-
+// Criando o manipulador do contexto
+const MainLayout: React.FC = ({ children }) => {
   return (
-    <MainLayoutContext.Provider
-      value={{
-        state,
-        setState
-      }}
-    >
+    <MainLayoutContext.Provider value={{}}>
       <Page>
-        <MenuContextProvider></MenuContextProvider>
+        <Menu></Menu>
 
         <PageData>{children}</PageData>
       </Page>
@@ -43,5 +21,4 @@ const MainLayoutContextProvider: React.FC = ({ children }) => {
   );
 };
 
-export { MainLayoutContextProvider };
-export default MainLayoutContext;
+export default MainLayout;

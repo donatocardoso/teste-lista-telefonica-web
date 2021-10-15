@@ -13,57 +13,46 @@ import {
 } from "react-icons/fa";
 import { IconRow } from "./styles";
 
-//Tipando os dados que quero para usuário
-type MenuType = {
-  open: boolean;
+export enum Themes {
+  Light = "light",
+  Dark = "dark"
+}
+
+// Criando o tipo do contexto
+type MenuContextType = {
+  theme: "light" | "dark";
+
+  setTheme: React.Dispatch<React.SetStateAction<Themes>>;
 };
 
-//Tipando as Props do contexto
-type PropsMenuContext = {
-  state: MenuType;
-  setState: React.Dispatch<React.SetStateAction<MenuType>>;
-};
+// Criando o contexto inicial
+export const MenuContext = createContext<MenuContextType>({
+  theme: Themes.Dark,
 
-//Valor default do contexto
-const DEFAULT_VALUE = {
-  state: {
-    open: true
-  },
-  setState: () => {} //função de inicialização
-};
+  setTheme: () => {}
+});
 
-//criando nosso contexto MenuContext
-const MenuContext = createContext<PropsMenuContext>(DEFAULT_VALUE);
-
-/**
- * Função que irá conter o estado e função que irá alterar o estado 'setState'
- * quer irá prover o contexto para os componentes filhos da árvore
- */
-const MenuContextProvider: React.FC = ({ children }) => {
-  const [state, setState] = useState(DEFAULT_VALUE.state);
+// Criando o manipulador do contexto
+const Menu: React.FC = () => {
+  const [theme, setTheme] = useState<"light" | "dark">(Themes.Dark);
 
   return (
-    <MenuContext.Provider
-      value={{
-        state,
-        setState
-      }}
-    >
-      <Navbar fixed="top" bg="dark" expand="lg">
+    <MenuContext.Provider value={{ theme, setTheme }}>
+      <Navbar fixed="top" bg={theme} expand="lg">
         <Navbar.Toggle aria-controls="navbarScroll" />
 
         <Navbar.Collapse id="navbarScroll">
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
                 <FaRegUser></FaRegUser>
 
-                <Navbar.Brand href="#home">Contatos</Navbar.Brand>
+                <Navbar.Brand href="/">Contatos</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
 
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
                 <FaUndo></FaUndo>
@@ -73,7 +62,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
                 <FaRegPlusSquare></FaRegPlusSquare>
@@ -83,7 +72,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
                 <FaSortDown></FaSortDown>
@@ -93,7 +82,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
                 <FaFileImport></FaFileImport>
@@ -103,7 +92,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
                 <FaFileExport></FaFileExport>
@@ -113,7 +102,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
                 <FaPrint></FaPrint>
@@ -123,7 +112,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
                 <FaFolderOpen></FaFolderOpen>
@@ -133,7 +122,7 @@ const MenuContextProvider: React.FC = ({ children }) => {
             </Container>
           </Navbar>
 
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
                 <FaTrash></FaTrash>
@@ -148,5 +137,4 @@ const MenuContextProvider: React.FC = ({ children }) => {
   );
 };
 
-export { MenuContextProvider };
-export default MenuContext;
+export default Menu;
