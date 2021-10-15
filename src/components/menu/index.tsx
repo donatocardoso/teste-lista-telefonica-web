@@ -5,7 +5,6 @@ import {
   FaFileImport,
   FaFolderOpen,
   FaPrint,
-  FaRegPlusSquare,
   FaRegUser,
   FaSortDown,
   FaTrash,
@@ -47,16 +46,6 @@ const Menu: React.FC = () => {
                 <FaUndo></FaUndo>
 
                 <Navbar.Brand href="#home">Contatos frequentes</Navbar.Brand>
-              </IconRow>
-            </Container>
-          </Navbar>
-
-          <Navbar bg={theme} variant={theme}>
-            <Container>
-              <IconRow>
-                <FaRegPlusSquare></FaRegPlusSquare>
-
-                <Navbar.Brand href="#home">Mesclar e corrigir</Navbar.Brand>
               </IconRow>
             </Container>
           </Navbar>
