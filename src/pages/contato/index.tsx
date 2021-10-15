@@ -1,16 +1,8 @@
 import { createContext, useState } from "react";
+import { ContatoContextType } from "../../types/contato";
 import ContatoGrid from "./ContatoGrid";
 import ContatoModal from "./ContatoModal";
 import "./styles";
-
-// Criando o tipo do contexto
-type ContatoContextType = {
-  isOpen: boolean;
-  idContato: number;
-
-  open: React.Dispatch<React.SetStateAction<number>>;
-  close: React.Dispatch<React.SetStateAction<boolean>>;
-};
 
 // Criando o contexto inicial
 export const ContatoContext = createContext<ContatoContextType | null>(null);

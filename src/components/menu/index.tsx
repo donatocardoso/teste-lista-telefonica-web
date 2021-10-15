@@ -11,19 +11,8 @@ import {
   FaTrash,
   FaUndo
 } from "react-icons/fa";
+import { MenuContextType, Themes } from "../../types/menu";
 import { IconRow } from "./styles";
-
-export enum Themes {
-  Light = "light",
-  Dark = "dark"
-}
-
-// Criando o tipo do contexto
-type MenuContextType = {
-  theme: "light" | "dark";
-
-  setTheme: React.Dispatch<React.SetStateAction<Themes>>;
-};
 
 // Criando o contexto inicial
 export const MenuContext = createContext<MenuContextType>({

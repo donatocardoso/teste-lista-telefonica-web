@@ -1,9 +1,7 @@
 import React, { createContext } from "react";
 import Menu from "../../components/menu";
+import { MainLayoutContextType } from "../../types/layout/main";
 import { Page, PageData } from "./styles";
-
-// Criando o tipo do contexto
-type MainLayoutContextType = {};
 
 // Criando o contexto inicial
 export const MainLayoutContext = createContext<MainLayoutContextType>(null);
