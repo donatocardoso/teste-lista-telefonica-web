@@ -1,12 +1,12 @@
 import React, { createContext, useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import {
+  FaBookmark,
   FaFileExport,
   FaFileImport,
   FaFolderOpen,
   FaPrint,
   FaRegUser,
-  FaSortDown,
   FaTrash,
   FaUndo
 } from "react-icons/fa";
@@ -53,7 +53,7 @@ const Menu: React.FC = () => {
           <Navbar bg={theme} variant={theme}>
             <Container>
               <IconRow>
-                <FaSortDown></FaSortDown>
+                <FaBookmark></FaBookmark>
 
                 <Navbar.Brand href="#home">Marcadores</Navbar.Brand>
               </IconRow>
