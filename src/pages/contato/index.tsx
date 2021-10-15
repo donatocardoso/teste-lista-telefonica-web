@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { ContatoContextType } from "../../types/contato";
 import ContatoGrid from "./ContatoGrid";
-import ContatoModal from "./ContatoModal";
+import ContatoModal from "./EditContatoModal";
 import "./styles";
 
 // Criando o contexto inicial
@@ -9,21 +9,36 @@ export const ContatoContext = createContext<ContatoContextType | null>(null);
 
 // Criando o manipulador do contexto
 const Contato: React.FC = () => {
-  const [isOpen, setState] = useState<boolean>(false);
-  const [idContato, setIdContato] = useState<number>(0);
+  const [OpenCreateModal, CreateModalState] = useState<boolean>(false);
+  const [OpenEditModal, EditModalState] = useState<boolean>(false);
+  const [IdContato, SetIdContato] = useState<number>(0);
 
-  function open(idContato: number) {
-    setIdContato(idContato);
-    setState(true);
-  }
-
-  function close(value: boolean) {
-    setIdContato(null);
-    setState(false);
-  }
+  const context = {
+    CreateModal: {
+      IsOpen: OpenCreateModal,
+      Open: () => {
+        CreateModalState(true);
+      },
+      Close: () => {
+        CreateModalState(false);
+      }
+    },
+    EditModal: {
+      IsOpen: OpenEditModal,
+      IdContato: IdContato,
+      Open: (idContato: number) => {
+        SetIdContato(idContato);
+        EditModalState(true);
+      },
+      Close: () => {
+        SetIdContato(null);
+        EditModalState(false);
+      }
+    }
+  };
 
   return (
-    <ContatoContext.Provider value={{ isOpen, idContato, open, close }}>
+    <ContatoContext.Provider value={context}>
       <ContatoModal></ContatoModal>
       <ContatoGrid></ContatoGrid>
     </ContatoContext.Provider>

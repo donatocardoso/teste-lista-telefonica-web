@@ -4,7 +4,7 @@ import { ContatoContext } from ".";
 import { ApiTokiToki } from "../../apis";
 import { ContatoType } from "../../types/contato";
 
-const ContatoModal: React.FC = () => {
+const EditContatoModal: React.FC = () => {
   const context = React.useContext(ContatoContext);
 
   const [contato, setContato] = React.useState<ContatoType>(null);
@@ -12,12 +12,12 @@ const ContatoModal: React.FC = () => {
   const closeModal = () => {
     setContato(null);
 
-    context.close(true);
+    context.EditModal.Close();
   };
 
   React.useEffect(() => {
     const fetchContato = () => {
-      ApiTokiToki.get(`/contato/${context.idContato}`)
+      ApiTokiToki.get(`/contato/${context.EditModal.IdContato}`)
         .then(({ data }: any) => {
           setContato(data.content);
         })
@@ -26,12 +26,12 @@ const ContatoModal: React.FC = () => {
         });
     };
 
-    if (context.isOpen && context.idContato && !contato) fetchContato();
-  }, [context.isOpen, context.idContato, contato]);
+    if (context.EditModal.IsOpen && context.EditModal.IdContato && !contato) fetchContato();
+  }, [context.EditModal.IsOpen, context.EditModal.IdContato, contato]);
 
-  if (context.isOpen && context.idContato && contato) {
+  if (context.EditModal.IsOpen && context.EditModal.IdContato && contato) {
     return (
-      <Modal show={context.isOpen} onHide={closeModal}>
+      <Modal show={context.EditModal.IsOpen} onHide={closeModal}>
         <Modal.Header closeButton>
           <Modal.Title>Edição do Contato #{contato.Id}</Modal.Title>
         </Modal.Header>
@@ -53,4 +53,4 @@ const ContatoModal: React.FC = () => {
   } else return <></>;
 };
 
-export default ContatoModal;
+export default EditContatoModal;

@@ -1,9 +1,21 @@
-export type ContatoContextType = {
-  isOpen: boolean;
-  idContato: number;
+type CreateContatoModalContextType = {
+  IsOpen: boolean;
 
-  open: React.Dispatch<React.SetStateAction<number>>;
-  close: React.Dispatch<React.SetStateAction<boolean>>;
+  Open: Function;
+  Close: Function;
+};
+
+type EditContatoModalContextType = {
+  IsOpen: boolean;
+  IdContato: number;
+
+  Open: Function;
+  Close: Function;
+};
+
+export type ContatoContextType = {
+  CreateModal: CreateContatoModalContextType;
+  EditModal: EditContatoModalContextType;
 };
 
 export type ContatoType = {
@@ -14,7 +26,3 @@ export type ContatoType = {
   Telefone: string;
   Marcadores: string[];
 };
-
-export interface ContatoModalProps {
-  IdContato: number;
-}
